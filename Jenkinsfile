@@ -14,6 +14,7 @@ pipeline {
                echo 'ls'
            }
         }
+      }
          stage {
                  stage('Build') {
                      steps {
