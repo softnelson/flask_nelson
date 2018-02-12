@@ -14,13 +14,13 @@ pipeline {
                echo 'ls'
            }
         }
-stages {
-        stage("testing 123") {
-            steps {
-                sh 'node --version'
+         stage('test in docker') {
+            agent {
+               docker {
+                  image 'ubuntu:16.04'
+                     reuseNode true
             }
-        }
-    }
+       }
         stage('test container') {
             steps {
                 sh 'echo exit | telnet localhost 5000'
