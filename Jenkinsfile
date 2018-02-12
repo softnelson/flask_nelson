@@ -14,15 +14,15 @@ pipeline {
                echo 'ls'
            }
         }
-      }
-         stage {
-                 stage('Build') {
-                     steps {
-                         echo 'Building...'
-                         sh 'npm install'
-                     }
-                 }
-           }
+      stages {
+              stage('Build') {
+                  steps {
+                      echo 'Building...'
+                      sh 'npm install'
+                  }
+              }
+
+       }
         stage('test container') {
             steps {
                 sh 'echo exit | telnet localhost 5000'
