@@ -14,14 +14,18 @@ pipeline {
                echo 'ls'
            }
         }
-         stage('test in docker') {
+        stage('create container'){
             agent {
-               docker {
-                  image 'ubuntu:16.04'
-                     reuseNode true
-            }
-          }
-        }   
+                docker {
+                  reuseNode true
+                  image 'flask_app:1.0'
+              }
+           }
+            steps {
+              echo 'done'
+           }
+
+       }
         stage('test container') {
             steps {
                 sh 'echo exit | telnet localhost 5000'
