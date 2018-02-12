@@ -20,7 +20,8 @@ pipeline {
                   image 'ubuntu:16.04'
                      reuseNode true
             }
-       }
+          }
+        }   
         stage('test container') {
             steps {
                 sh 'echo exit | telnet localhost 5000'
