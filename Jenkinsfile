@@ -18,7 +18,7 @@ pipeline {
             agent {
                 docker {
                   reuseNode true
-                    image 'app.py:1.0'
+                    image 'app'
               }
            }
             steps {
