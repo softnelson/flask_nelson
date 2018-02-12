@@ -21,6 +21,7 @@ pipeline {
                          sh 'npm install'
                      }
                  }
+           }
         stage('test container') {
             steps {
                 sh 'echo exit | telnet localhost 5000'
