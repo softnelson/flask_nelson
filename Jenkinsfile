@@ -7,7 +7,7 @@ pipeline {
                    reuseNode true                    
                    filename 'Dockerfile'
                    dir '.'
-                   additionalBuildArgs '-t flask_nelson'
+                   additionalBuildArgs '-t flask_app'
                }
            }
            steps {
@@ -18,7 +18,7 @@ pipeline {
             agent {
                 docker {
                   reuseNode true
-                  image 'flask_nelson:1.0'
+                  image 'flask_app:1.0'
               }
            }
             steps {
