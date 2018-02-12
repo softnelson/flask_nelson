@@ -18,7 +18,7 @@ pipeline {
             agent {
                 docker {
                   reuseNode true
-                  image 'FLASK_APP=</path/to/file/containing/app/instance>.py'
+                    image 'app.py:1.0'
               }
            }
             steps {
