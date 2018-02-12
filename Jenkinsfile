@@ -14,13 +14,16 @@ pipeline {
                echo 'ls'
            }
         }
-      stages {
-              stage('Build') {
-                  steps {
-                      echo 'Building...'
-                      sh 'npm install'
-                  }
+        stage('create container'){
+            agent {
+                docker {
+                  reuseNode true
+                  image 'flask_app:1.0'
               }
+           }
+            steps {
+              echo 'done'
+           }
 
        }
         stage('test container') {
