@@ -1,6 +1,7 @@
 FROM ubuntu:latest
 
 RUN \
+    docker run -p 8080:8080
     apt-get update \
     && apt-get install -qy \
     python python-setuptools \
