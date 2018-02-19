@@ -8,6 +8,7 @@
                    filename 'Dockerfile'
                    dir '.'      
                    additionalBuildArgs '-t flask_app'
+                    image 'maven:3-alpine'
                }
            }
            steps {
