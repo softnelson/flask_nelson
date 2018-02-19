@@ -25,11 +25,6 @@ pipeline {
                 echo 'Testing....'
             }
        }
-      stage('install') {
-            steps {
-            echo 'Testing....'
-            }
-         }
        
    }
    post {
