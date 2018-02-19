@@ -7,7 +7,8 @@
                    reuseNode true                    
                    filename 'Dockerfile'
                    dir '.'
-                   image: myfffff:latest
+                    env:
+                   - name: JAVA_OPTS
                }
            }
            steps {
