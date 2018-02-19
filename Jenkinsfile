@@ -7,7 +7,7 @@
                    reuseNode true                    
                    filename 'Dockerfile'
                    dir '.'
-                  def app = docker.build "your-project-name"
+                  def flask_nelson = docker.build "flask_nelson"
                }
            }
            steps {
