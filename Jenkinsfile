@@ -27,7 +27,6 @@
            steps {
                echo 'ls'
            }
-		}
    }
    post {
        always {
