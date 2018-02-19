@@ -27,9 +27,7 @@ pipeline {
        }
       stage('install') {
             steps {
-                withSonarQubeEnv {
-                  sh "./gradlew clean sonarqube"
-                   }
+            echo 'Testing....'
             }
          }
        
