@@ -3,12 +3,10 @@
    stages{
        stage('Build Docker Image') {
            agent {
-               dockerfile {
-                   reuseNode true                    
+               dockerfile {               
                    filename 'Dockerfile'
                    dir '.'      
                    additionalBuildArgs '-t flask_app'
-                    image '-t flask_app'
                }
            }
            steps {
