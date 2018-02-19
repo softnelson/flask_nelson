@@ -11,7 +11,7 @@
                }
            }
            steps {
-              sh "./run-tests-in-docker.sh"
+               echo 'ls'
            }
        }
    }
