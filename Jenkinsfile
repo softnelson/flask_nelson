@@ -3,15 +3,15 @@
    stages{
        stage('Build Docker Image') {
            agent {
-               docker {
+               dockerfile {
                    reuseNode true                    
-                   image 'abc'
+                   filename 'Dockerfile'
                    dir '.'
                    additionalBuildArgs '-t flask_app'
                }
            }
            steps {
-               echo 'ls'
+              sh "./run-tests-in-docker.sh"
            }
        }
    }
