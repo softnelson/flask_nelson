@@ -3,8 +3,8 @@
    stages{
        stage('Build Docker Image') {
            agent {
-             docker { image 'maven:3-alpine' }
                dockerfile {
+                   docker { image 'maven:3-alpine' }
                    reuseNode true                    
                    filename 'Dockerfile'
                    dir '.'            
