@@ -1,3 +1,4 @@
+
 pipeline {
    agent any   
    stages{
@@ -17,6 +18,7 @@ pipeline {
 	   stage('create container'){
             agent {
                 docker {
+			docker login PrivateRepo
                   reuseNode true
                   image 'flask_app'
 		   args 'flask_app:1.0'
