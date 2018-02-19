@@ -7,8 +7,7 @@
                    reuseNode true                    
                    filename 'Dockerfile'
                    dir '.'
-                    env:
-                   - name: JAVA_OPTS
+                  def app = docker.build "your-project-name"
                }
            }
            steps {
