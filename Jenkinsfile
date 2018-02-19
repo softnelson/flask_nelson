@@ -1,5 +1,9 @@
 
-  pipeline {
+service_port = 9000  
+mongo_port = 27017  
+rabbit_port = 5672  
+
+pipeline {
    agent any   
    stages{
        stage('Build Docker Image') {
@@ -18,9 +22,8 @@
 	   stage('create container'){
             agent {
                 docker {
-                  reuseNode true
-                  image 'flask_app'
-				  args 'flask_app:1.0'
+			docker build -t myDockerImage $WORKSPACE  
+			docker run -d -p $service_port -p $mongo_port -p $rabbit_port myDockerImage  
 				}
 			}
 		steps {
