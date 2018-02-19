@@ -5,7 +5,7 @@
            agent {
                docker {
                    reuseNode true                    
-                   image 'abc
+                   image 'abc'
                    dir '.'
                    additionalBuildArgs '-t flask_app'
                }
