@@ -7,7 +7,6 @@
                    reuseNode true                    
                    filename 'Dockerfile'
                    dir '.'
-                   additionalBuildArgs '-t flask_app'
                }
            }
            steps {
