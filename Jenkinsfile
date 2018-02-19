@@ -4,7 +4,7 @@
        stage('Build Docker Image') {
            agent {
                dockerfile {
-                   image 'maven:3-alpine' 
+                   image 'flask_nelson' 
                    reuseNode true                    
                    filename 'Dockerfile'
                    dir '.'            
