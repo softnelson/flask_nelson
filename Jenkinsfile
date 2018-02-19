@@ -25,6 +25,12 @@ pipeline {
                 echo 'Testing....'
             }
        }
+      stage('test container') {
+            steps {
+                withSonarQubeEnv {
+                  sh "./gradlew clean sonarqube"
+            }
+         }
        
    }
    post {
