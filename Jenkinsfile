@@ -1,8 +1,7 @@
-
 pipeline {
-   agent any   
+   agent any  
    stages{
-       stage('Build Docker Image') {
+       stage('Build Docker Image ') {
            agent {
                dockerfile {
                    reuseNode true                    
@@ -14,20 +13,19 @@ pipeline {
            steps {
                echo 'ls'
            }
-       }
-	   stage('create container'){
-            agent {
-                docker {
-			docker login PrivateRepo
-                  reuseNode true
-                  image 'flask_app'
-		   args 'flask_app:1.0'
-				}
-			}
-		steps {
-               echo 'ls'
+        }
+        stage('create container'){
+             steps {
+                        sh 'docker run -d --name nomeflask flask_app 5000:5000'
+            
+               }
            }
-		}
+        stage('test container') {
+            steps {
+                echo 'Testing....'
+            }
+       }
+       
    }
    post {
        always {
