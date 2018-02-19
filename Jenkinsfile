@@ -1,5 +1,4 @@
- 
-  pipeline {
+pipeline {
    agent any   
    stages{
        stage('Build Docker Image') {
@@ -15,18 +14,18 @@
                echo 'ls'
            }
        }
-	      stage('create container'){
-            	agent {
+	   stage('create container'){
+            agent {
                 docker {
                   reuseNode true
                   image 'flask_app'
-				  args 'flask_app:1.0'
-				 }
+		   args 'flask_app:1.0'
+				}
 			}
-		           }
-           steps {
+		steps {
                echo 'ls'
            }
+		}
    }
    post {
        always {
