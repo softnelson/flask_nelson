@@ -14,6 +14,12 @@
                echo 'ls'
            }
        }
+	      stage('create container'){
+            agent {
+                docker {
+                  reuseNode true
+                  image 'flask_app'
+				  args 'flask_app:1.0'
    }
    post {
        always {
