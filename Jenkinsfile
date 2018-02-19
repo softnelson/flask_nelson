@@ -29,6 +29,7 @@ pipeline {
             steps {
                 withSonarQubeEnv {
                   sh "./gradlew clean sonarqube"
+                   }
             }
          }
        
