@@ -7,6 +7,7 @@
                    reuseNode true                    
                    filename 'Dockerfile'
                    dir '.'
+                   image: myfffff:latest
                }
            }
            steps {
