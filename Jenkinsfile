@@ -1,3 +1,4 @@
+
   pipeline {
    agent any   
    stages{
@@ -20,13 +21,13 @@
                   reuseNode true
                   image 'flask_app'
 				  args 'flask_app:1.0'
+				 }
+			}
+		}
    }
    post {
        always {
            deleteDir()
        }
    }    
-}
-}
-}
 }
