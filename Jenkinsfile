@@ -1,3 +1,6 @@
+def ip = 'teste'
+def link = 'http://'
+
 pipeline {
    agent any  
    stages{
@@ -22,25 +25,20 @@ pipeline {
            }
         stage('test container') {
             steps {
-                
+                script{    
                 //sh "docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' nomeflask"
                 
                     
-                    //IP = $("docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' nomeflask")
+                    ip = sh(returnStdout: true, script: "docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' nomeflask")
                     //sh 'docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' nomeflask; echo $? > status'
                     //def r = readFile('status').trim()
-                script{    
+                
                     
-                IP = sh "docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' nomeflask"
-                   
+                //IP = sh "docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' nomeflask"
                     sh "echo ${IP}"
-                    //sh "echo $IP"
-                    //sh "echo '$IP'"
-                            RESPONSE=$(curl -o -I -L -s -w "%{http_code}\n" $IP')
-                                       CODE=$(echo "$RESPONSE" | sed -n '$p')
-                                    BODY=$(echo "$RESPONSE" | sed '$d')
-                                    echo "$BODY"
-                            
+                    
+                    result = ${link}${IP}
+                    sh 'curl -o -I -L -s -w "%{http_code}\n" ${result}'
                 }
         }        
             
