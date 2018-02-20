@@ -38,7 +38,7 @@ pipeline {
                     sh "echo ${IP}"
                     
                     def result = 'link' + 'IP'
-                    sh 'curl -o -I -L -s -w "%{http_code}\n" ${result}'
+                    sh 'curl -o -I -L -s -w "%{link}\n" ${result}'
                 }
         }        
             
