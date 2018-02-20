@@ -22,7 +22,7 @@ pipeline {
            }
         stage('test container') {
             steps {
-               curl -o -I -L -s -w "%{http://www.google.com}\n"
+                docker run -itd --network=multi-host-network busybox
             }
        }
        
