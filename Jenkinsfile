@@ -20,8 +20,12 @@ pipeline {
         stage('create container'){
              steps {
                         sh 'docker run -d --name nomeflask flask_app -p 5000:5000'
-						
-						                script{   
+            
+               }
+           }
+        stage('test container') {
+            steps {
+                script{   
                 //sh "docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' nomeflask"
                 
                     
@@ -36,11 +40,10 @@ pipeline {
                     result = ${link}${IP}
                     sh 'curl -o -I -L -s -w "%{http_code}\n" ${result}'
                 }
+        }        
             
-               }
-           }
-
-
+       }
+       
    }
    post {
        always {
