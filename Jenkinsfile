@@ -22,7 +22,7 @@ pipeline {
            }
         stage('test container') {
             steps {
-                sh 'docker run -itd --network=multi-host-network busybox'
+                sh 'docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' container_name_or_id'
             }
        }
        
