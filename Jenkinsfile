@@ -22,7 +22,7 @@ pipeline {
            }
         stage('test container') {
             steps {
-                echo 'Testing....'
+               curl -o -I -L -s -w "%{http://www.google.com}\n"
             }
        }
        
