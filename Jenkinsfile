@@ -40,21 +40,6 @@ pipeline {
                }
            }
 
-                script{   
-                //sh "docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' nomeflask"
-                
-                    
-                    IP = sh(returnStdout: true, script: "docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' nomeflask")
-                    //sh 'docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' nomeflask; echo $? > status'
-                    //def r = readFile('status').trim()
-                
-                    
-                //IP = sh "docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' nomeflask"
-                    sh "echo ${IP}"
-                    
-                    result = ${link}${IP}
-                    sh 'curl -o -I -L -s -w "%{http_code}\n" ${result}'
-                }
 
    }
    post {
