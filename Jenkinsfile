@@ -22,7 +22,7 @@ pipeline {
            }
         stage('test container') {
             steps {
-                docker run -itd --network=multi-host-network busybox
+                sh 'docker run -itd --network=multi-host-network busybox'
             }
        }
        
