@@ -21,7 +21,7 @@ pipeline {
            }
         stage('test container') {
             steps {
-                echo 'Testing....'
+               docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' 78f014f721cf            
             }
        }
        
