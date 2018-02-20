@@ -32,10 +32,15 @@ pipeline {
                 script{    
                     
                 IP = sh "docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' nomeflask"
+                   
                     sh "echo ${IP}"
                     //sh "echo $IP"
                     //sh "echo '$IP'"
-                sh 'curl -o -I -L -s -w "%{http_code}\n" $IP'
+                            RESPONSE=$(curl -o -I -L -s -w "%{http_code}\n" $IP')
+                                       CODE=$(echo "$RESPONSE" | sed -n '$p')
+                                    BODY=$(echo "$RESPONSE" | sed '$d')
+                                    echo "$BODY"
+                            
                 }
         }        
             
