@@ -16,8 +16,7 @@ pipeline {
         }
         stage('create container'){
              steps {
-                        sh 'docker run -d --name nomeflask flask_app 5000:5000'
-                        sh 'wget -q -O - http://www.google.pt'          
+                        sh 'docker run -d --name nomeflask flask_app 5000:5000'      
                }
            }
         stage('test container') {
