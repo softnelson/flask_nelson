@@ -1,5 +1,11 @@
+def s = 'docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' nomeflask'
 pipeline {
    agent any  
+   
+  environment {
+      def s = 'docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' nomeflask'
+    }
+   
    stages{
        stage('Build Docker Image ') {
            agent {
@@ -16,13 +22,30 @@ pipeline {
         }
         stage('create container'){
              steps {
-                        sh 'docker run -d --name nomeflask flask_app 5000:5000'      
+                        sh 'docker run -d --name nomeflask flask_app -p 5000:5000'
+            
                }
            }
         stage('test container') {
             steps {
-               docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' 78f014f721cf            
-            }
+                
+                sh '${s}'
+                
+                    
+                    //IP = "${sh('docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' nomeflask')}"
+                    //sh 'docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' nomeflask; echo $? > status'
+                    //def r = readFile('status').trim()
+                    
+                    
+                //Teste = sh (returnStdout: true ,
+                    //script: 'docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' nomeflask',
+                    
+                //).trim()
+                
+                    sh 'curl -o -I -L -s -w "%{http_code}\n" $IP'
+                }
+                
+            
        }
        
    }
