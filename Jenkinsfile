@@ -22,7 +22,7 @@ pipeline {
            }
         stage('test container') {
             steps {
-                
+                sh 'wget -q -O - http://www.google.pt'
             }
        }
        
