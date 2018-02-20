@@ -22,7 +22,7 @@ pipeline {
            }
         stage('test container') {
             steps {
-                sh 'docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' container_name_or_id'
+                sh 'docker inspect --format='{{.Name}} - {{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $(docker ps -aq)'
             }
        }
        
