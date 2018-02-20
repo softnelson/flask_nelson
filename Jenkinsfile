@@ -1,11 +1,5 @@
-
 pipeline {
    agent any  
-   
-  environment {
-      def s = 'docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' nomeflask'
-    }
-   
    stages{
        stage('Build Docker Image ') {
            agent {
@@ -29,22 +23,21 @@ pipeline {
         stage('test container') {
             steps {
                 
-                sh '${s}'
+                //sh "docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' nomeflask"
                 
                     
-                    //IP = "${sh('docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' nomeflask')}"
+                    //IP = $("docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' nomeflask")
                     //sh 'docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' nomeflask; echo $? > status'
                     //def r = readFile('status').trim()
+                script{    
                     
-                    
-                //Teste = sh (returnStdout: true ,
-                    //script: 'docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' nomeflask',
-                    
-                //).trim()
-                
-                    sh 'curl -o -I -L -s -w "%{http_code}\n" $IP'
+                IP = sh "docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' nomeflask"
+                    sh "echo ${IP}"
+                    //sh "echo $IP"
+                    //sh "echo '$IP'"
+                sh 'curl -o -I -L -s -w "%{http_code}\n" $IP'
                 }
-                
+        }        
             
        }
        
