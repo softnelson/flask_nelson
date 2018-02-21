@@ -2,7 +2,7 @@
 def link = 'http://'
 def ip = 'teste'
 def port = ':5000'
-def tot =  link + port 
+//def tot =  link + port 
 
 
 pipeline {
@@ -43,7 +43,7 @@ pipeline {
                     sh "echo ${link}" 
                     sh "echo ${port}"                 
                     sh "echo ${link}${ip}"
-                    String s = [ 'ip', 'link' ].join('')
+                    String s = [ ip , link ].join('')
                     sh "echo ${s}" 
                     //result = sh "echo ${ip}${tot}"
 
