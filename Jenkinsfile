@@ -1,7 +1,7 @@
 
 def link = 'http://'
 def ip = 'teste'
-def port = ':5000'
+def port = '5000'
 //def tot =  link + port 
 
 
@@ -42,11 +42,7 @@ pipeline {
                     sh "echo ${ip}"
                     sh "echo ${link}" 
                     sh "echo ${port}"                 
-                    sh "echo ${link}${ip}"
-                     ip2 = ip
-                     link2 = link
-                    String s = [ ip2 , link2 ].join('')
-                    sh "echo ${s}" 
+                    sh "echo ${link}${ip}${port}"
                     //result = sh "echo ${ip}${tot}"
 
                     //sh 'curl -o -I -L -s -w "%{http_code}\n" ${link}${ip}'
