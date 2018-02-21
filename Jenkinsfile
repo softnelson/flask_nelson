@@ -1,6 +1,7 @@
 def ip = 'teste'
 def link = 'http://'
 def port = ':5000'
+def tot = link  +  ip + port 
 
 
 pipeline {
@@ -39,10 +40,9 @@ pipeline {
                      //IP = sh "docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' nomeflask"
                     sh "echo ${ip}"
                     sh "echo ${link}" 
-                    sh "echo ${port}"
-                    def tot = link  +  ip + port 
+                    sh "echo ${port}"                 
                     sh "echo ${tot}"
-                    result = sh "echo ${link}${ip}"
+                    //result = sh "echo ${link}${ip}"
 
                     //sh 'curl -o -I -L -s -w "%{http_code}\n" ${link}${ip}'
                 }
