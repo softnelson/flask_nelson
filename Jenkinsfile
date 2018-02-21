@@ -1,7 +1,7 @@
 def ip = 'teste'
 def link = 'http://'
 def port = ':5000'
-def tot = ip  + link  + port 
+
 
 pipeline {
    agent any  
@@ -40,6 +40,7 @@ pipeline {
                     sh "echo ${ip}"
                     sh "echo ${link}" 
                     sh "echo ${port}"
+                    def tot = link  +  ip + port 
                     sh "echo ${tot}"
                     result = sh "echo ${link}${ip}"
 
