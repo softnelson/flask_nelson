@@ -37,7 +37,8 @@ pipeline {
                 //IP = sh "docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' nomeflask"
                     sh "echo ${ip}"
                     
-                    result = ${link}${ip}
+                    //result = ${link}${ip}
+                    result=$(echo ${link}_${ip})
                     sh 'curl -o -I -L -s -w "%{http_code}\n" ${result}'
                 }
         }        
