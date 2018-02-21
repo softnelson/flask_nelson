@@ -42,8 +42,8 @@ pipeline {
                     sh "echo ${ip}"
                     sh "echo ${link}" 
                     sh "echo ${port}"                 
-                    //sh "echo ${tot}"
-                    result = sh "echo ${ip}${tot}"
+                    sh "echo ${ip}${tot}"
+                    //result = sh "echo ${ip}${tot}"
 
                     //sh 'curl -o -I -L -s -w "%{http_code}\n" ${link}${ip}'
                 }
