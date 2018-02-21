@@ -38,7 +38,7 @@ pipeline {
                 
                     
                      //IP = sh "docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' nomeflask"
-                    sh "echo ${ip}"
+                    sh "echo ${ip + link + port}"
                     sh "echo ${link}" 
                     sh "echo ${port}"                 
                     sh "echo ${tot}"
