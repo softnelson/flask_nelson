@@ -1,5 +1,6 @@
 def ip = 'teste'
 def link = 'http://'
+def port = ':5000'
 
 pipeline {
    agent any  
@@ -34,13 +35,13 @@ pipeline {
                     //def r = readFile('status').trim()
                 
                     
-                //IP = sh "docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' nomeflask"
+                     //IP = sh "docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' nomeflask"
                     sh "echo ${ip}"
                     
                     //result = ${link}${ip}
                     NAME = ${link}_${ip}
-                     sh "echo ${NAME}"
-                    sh 'curl -o -I -L -s -w "%{http_code}\n" ${result}'
+                    sh "echo ${NAME}"
+                    sh 'curl -o -I -L -s -w "%{http_code}\n" ${Name}'
                 }
         }        
             
