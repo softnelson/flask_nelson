@@ -1,6 +1,7 @@
 def ip = 'teste'
 def link = 'http://'
 def port = ':5000'
+def tot = [ 'ip' 'link' 'port']
 
 pipeline {
    agent any  
@@ -39,7 +40,8 @@ pipeline {
                     sh "echo ${ip}"
                     sh "echo ${link}" 
                     sh "echo ${port}"
-                    result = sh "echo ${link}$ + {ip} + ${port}"
+                    sh "echo ${tot}"
+                    result = sh "echo ${link}${ip}"
 
                     //sh 'curl -o -I -L -s -w "%{http_code}\n" ${link}${ip}'
                 }
