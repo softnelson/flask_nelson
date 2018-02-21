@@ -1,7 +1,7 @@
 def ip = 'teste'
 def link = 'http://'
 def port = ':5000'
-def tot =  ip + port 
+def tot =  link + port 
 
 
 pipeline {
@@ -42,7 +42,7 @@ pipeline {
                     sh "echo ${link}" 
                     sh "echo ${port}"                 
                     sh "echo ${tot}"
-                    result = sh "echo ${link}${tot}"
+                    result = sh "echo ${link}${ip}"
 
                     //sh 'curl -o -I -L -s -w "%{http_code}\n" ${link}${ip}'
                 }
