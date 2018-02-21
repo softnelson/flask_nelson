@@ -43,7 +43,7 @@ pipeline {
                     sh "echo ${link}" 
                     sh "echo ${port}"                 
                     sh "echo ${link}${ip}"
-                   a =  "${link}${ip}"
+                   a =  "[${link}] [${ip}]"
                    b =  "${port}"
                    print(a + b)
                    
