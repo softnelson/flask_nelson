@@ -43,7 +43,7 @@ pipeline {
                     sh "echo ${link}" 
                     sh "echo ${port}"                 
                     sh "echo ${link}${ip}${port}"
-                     println Paths.get(${link}, ${ip}, ${port})
+                     println Paths.get(${link}, ${ip}, ${port}).trim()
                    
                     //result = sh "echo ${ip}${tot}"
 
