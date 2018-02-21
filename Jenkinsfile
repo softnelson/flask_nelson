@@ -44,7 +44,7 @@ pipeline {
                     sh "echo ${port}"                 
                      
                     result = sh(returnStdout: true, script: "echo ${ip}${tot}${port}").trim() 
-                    //result = sh "echo ${ip}${tot}${port}"
+                    sh "echo '${result}'"
 
                     //sh 'curl -o -I -L -s -w "%{http_code}\n" ${link}${ip}'
                 }
