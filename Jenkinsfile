@@ -42,11 +42,8 @@ pipeline {
                     sh "echo ${ip}"
                     sh "echo ${link}" 
                     sh "echo ${port}"                 
-                    sh "echo ${link}${ip}"
-                   a =  "[${link}] [${ip}]"
-                   b =  "${port}"
-                   print(a + b)
-                   
+                    sh "echo ${link}${ip}${port}"
+                     println Paths.get(${link}, ${ip}, ${port})
                    
                     //result = sh "echo ${ip}${tot}"
 
