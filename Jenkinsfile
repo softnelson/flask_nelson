@@ -1,4 +1,4 @@
-ip = sh(returnStdout: true, script: "docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' nomeflask")
+def ip = 'teste'
 def link = 'http://'
 def port = ':5000'
 def tot = link  +  ip + port 
