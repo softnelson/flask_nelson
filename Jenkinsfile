@@ -25,19 +25,19 @@ pipeline {
            }
         stage('test container') {
             steps {
-                script{   
+                script{    
                 //sh "docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' nomeflask"
                 
                     
-                    IP = sh(returnStdout: true, script: "docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' nomeflask")
+                    ip = sh(returnStdout: true, script: "docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' nomeflask")
                     //sh 'docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' nomeflask; echo $? > status'
                     //def r = readFile('status').trim()
                 
                     
                 //IP = sh "docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' nomeflask"
-                    sh "echo ${IP}"
+                    sh "echo ${ip}"
                     
-                    result = $link . $IP
+                    result = ${link}${ip}
                     sh 'curl -o -I -L -s -w "%{http_code}\n" ${result}'
                 }
         }        
