@@ -1,9 +1,6 @@
-
-def link = 'http://'
 def ip = 'teste'
-def port = ':5000'
-
-
+def link = 'http://'
+def porta = ':5000'
 
 pipeline {
    agent any  
@@ -17,36 +14,38 @@ pipeline {
                    additionalBuildArgs '-t flask_app'
                }
            }
-           steps {
+           steps
+            {
                echo 'ls'
            }
         }
         stage('create container'){
-             steps {
-                        sh 'docker run -d --name nomeflask flask_app -p 5000:5000'
             
+            steps{
+                sh 'docker run -d --name nomeflask flask_app -p 5000:5000'
                }
            }
         stage('test container') {
             steps {
-                script{    
-                //sh "docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' nomeflask"
-                
+                    script{    
+                        ip = sh(returnStdout: true, script: "docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' nomeflask").trim()
+                        sh "echo ${ip}"
+                        sh "echo ${link}"
+                        sh "echo ${porta}"
+                    result = sh(returnStdout: true, script: "echo $link$ip$porta").trim()
                     
-                    ip = sh(returnStdout: true, script: "docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' nomeflask")
-                    //sh 'docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' nomeflask; echo $? > status'
-                    //def r = readFile('status').trim()
-                
-                    
-                     //IP = sh "docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' nomeflask"
-                    sh "echo ${ip}"
-                    sh "echo ${link}" 
-                    sh "echo ${port}"                 
-                     
-                    result = sh(returnStdout: true, script: "echo $link$ip$port").trim() 
                     sh "echo '${result}'"
+                    container = sh(returnStdout: true, script:"curl -o -I -L -s -w \"%{http_code}\n\" ${result}").trim()
+                    
+                    sh "echo '${container}'"
 
-                    //sh 'curl -o -I -L -s -w "%{http_code}\n" ${link}${ip}'
+                    if (container == '200' ){ 
+                        println('Container Saudavel')
+                        }
+                    else {
+                        println('Erro no Container')
+                        }
+    
                 }
         }        
             
