@@ -42,10 +42,9 @@ pipeline {
                     sh "echo ${ip}"
                     sh "echo ${link}" 
                     sh "echo ${port}"                 
-                    sh "echo ${link}${ip}${port}"
-                     println Paths.get(${link}, ${ip}, ${port}).trim()
-                   
-                    //result = sh "echo ${ip}${tot}"
+                     
+                    result = sh(returnStdout: true, script: "docker inspect -f 'echo ${ip}${tot}${port}' nomeflask").trim() 
+                    //result = sh "echo ${ip}${tot}${port}"
 
                     //sh 'curl -o -I -L -s -w "%{http_code}\n" ${link}${ip}'
                 }
