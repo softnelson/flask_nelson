@@ -2,7 +2,7 @@
 def link = 'http://'
 def ip = 'teste'
 def port = ':5000'
-def tot =  link + ip + port 
+def tot =  link + port 
 
 
 pipeline {
@@ -33,7 +33,7 @@ pipeline {
                 //sh "docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' nomeflask"
                 
                     
-                    //ip = sh(returnStdout: true, script: "docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' nomeflask")
+                    ip = sh(returnStdout: true, script: "docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' nomeflask")
                     //sh 'docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' nomeflask; echo $? > status'
                     //def r = readFile('status').trim()
                 
@@ -43,7 +43,7 @@ pipeline {
                     sh "echo ${link}" 
                     sh "echo ${port}"                 
                     //sh "echo ${tot}"
-                    result = sh "echo ${link}${ip}"
+                    result = sh "echo ${ip}${tot}"
 
                     //sh 'curl -o -I -L -s -w "%{http_code}\n" ${link}${ip}'
                 }
