@@ -1,7 +1,7 @@
 def ip = 'teste'
 def link = 'http://'
 def port = ':5000'
-def tot = [ 'ip' 'link' 'port']
+def tot = 'ip' + 'link' + 'port'
 
 pipeline {
    agent any  
