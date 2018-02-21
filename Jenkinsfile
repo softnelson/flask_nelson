@@ -43,7 +43,9 @@ pipeline {
                     sh "echo ${link}" 
                     sh "echo ${port}"                 
                     sh "echo ${link}${ip}"
-                    String s = [ ip , link ].join('')
+                     ip2 = ip
+                     link2 = link
+                    String s = [ ip2 , link2 ].join('')
                     sh "echo ${s}" 
                     //result = sh "echo ${ip}${tot}"
 
