@@ -43,8 +43,10 @@ pipeline {
                     sh "echo ${link}" 
                     sh "echo ${port}"                 
                     sh "echo ${link}${ip}"
-                    //print(link + ip + port)
-                   print "${link}${ip}${port}" 
+                   a =  "${link}${ip}"
+                   b = print "${port}"
+                   print(a + b)
+                   
                    
                     //result = sh "echo ${ip}${tot}"
 
